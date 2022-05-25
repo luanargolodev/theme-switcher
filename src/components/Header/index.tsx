@@ -5,15 +5,19 @@ import { shade } from 'polished';
 
 import { Container } from './styles';
 
-const Header = () => {
-  const { colors } = useContext(ThemeContext);
+interface Props {
+  toggleTheme: () => void;
+}
+
+const Header = ({ toggleTheme }: Props) => {
+  const { colors, title } = useContext(ThemeContext);
 
   return (
     <Container>
       Hello World
       <Switch
-        onChange={() => {}}
-        checked={false}
+        onChange={toggleTheme}
+        checked={title === 'dark'}
         checkedIcon={false}
         uncheckedIcon={false}
         height={10}
